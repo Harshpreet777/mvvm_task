@@ -178,11 +178,8 @@ class HomeView extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => DetailView(
-                            id: list.id,
-                            avatar: list.avatar,
-                            email: list.email,
-                            firstName: list.firstName,
-                            lastName: list.lastName),
+                          name: list,
+                        ),
                       ));
                 },
                 child: Container(

@@ -10,6 +10,7 @@ class BaseView<T extends BaseModel> extends StatefulWidget {
   const BaseView({super.key, required this.builder, this.onModelReady});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BaseViewState<T> createState() => _BaseViewState<T>();
 }
 

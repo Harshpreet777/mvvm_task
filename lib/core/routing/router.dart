@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_task_demo/core/models/user_list_response_model.dart';
 import 'package:mvvm_task_demo/core/routing/routes.dart';
+import 'package:mvvm_task_demo/ui/views/detail_view.dart';
 import 'package:mvvm_task_demo/ui/views/home_view.dart';
 
 class PageRouter {
@@ -7,6 +9,9 @@ class PageRouter {
     switch (settings.name) {
       case Routes.homeRoute:
         return pageRoute(HomeView(), settings);
+      case Routes.detailsRoute:
+      UserListResponseModel userListResponseModel=settings.arguments as UserListResponseModel;
+      return pageRoute(DetailView(name: userListResponseModel), settings);
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => const Scaffold(

@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:mvvm_task_demo/core/constants/color_constants.dart';
 import 'package:mvvm_task_demo/core/constants/image_constants.dart';
 import 'package:mvvm_task_demo/core/constants/string_constants.dart';
+import 'package:mvvm_task_demo/core/models/user_list_response_model.dart';
 import 'package:mvvm_task_demo/core/viewmodels/detail_view_model.dart';
 import 'package:mvvm_task_demo/ui/views/base_view.dart';
 import 'package:mvvm_task_demo/ui/widgets/common_elevated_button.dart';
@@ -14,28 +14,21 @@ import 'package:mvvm_task_demo/ui/widgets/common_text.dart';
 class DetailView extends StatelessWidget {
   DetailView({
     super.key,
-    required this.id,
-    required this.avatar,
-    required this.email,
-    required this.firstName,
-    required this.lastName,
+     this.name,
+  
   });
-  int id;
-  String? email;
-  String? firstName;
-  String? lastName;
-  String? avatar;
+  UserListResponseModel? name;
+
   int buttonInd = 0;
 
-  bool onpress = false;
   DetailViewModel model = DetailViewModel();
   @override
   Widget build(BuildContext context) {
     return BaseView<DetailViewModel>(onModelReady: (model) {
       this.model = model;
-      SchedulerBinding.instance.addPostFrameCallback((_) {
-        model.buttonColorChn(context);
-      });
+      // SchedulerBinding.instance.addPostFrameCallback((_) {
+      //   model.buttonColorChn();
+      // });
     }, builder: (BuildContext context, DetailViewModel model, Widget? child) {
       return Scaffold(
         body: SingleChildScrollView(
@@ -59,8 +52,8 @@ class DetailView extends StatelessWidget {
                         width: 160,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: avatar != null
-                                  ? NetworkImage(avatar ?? '')
+                              image: name?.avatar != null
+                                  ? NetworkImage('${name?.avatar}')
                                   : NetworkImage(ImageConstant.user),
                               fit: BoxFit.cover),
                           borderRadius: const BorderRadius.all(
@@ -77,7 +70,7 @@ class DetailView extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 20),
                             child: TextWidget(
                               alignmentGeometry: Alignment.center,
-                              text: "$firstName $lastName",
+                              text: "${name?.firstName} ${name?.lastName}",
                               color: ColorConstants.black,
                               fontWeight: FontWeight.w500,
                               size: 18,
@@ -164,8 +157,8 @@ class DetailView extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            model.buttonColorChn(context);
             buttonInd = index;
+            model.buttonColorChn();
             log('${model.isPress}');
           },
           child: Padding(

@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_task_demo/core/enums/viewstate.dart';
-import 'package:mvvm_task_demo/core/models/page_one_response_model.dart';
+import 'package:mvvm_task_demo/core/models/user_list_response_model.dart';
 import 'package:mvvm_task_demo/core/repos/services.dart';
 import 'package:mvvm_task_demo/core/viewmodels/base_model.dart';
 
 class HomeViewModel extends BaseModel {
+  // ignore: prefer_typing_uninitialized_variables
   var userData;
   UserListResponseModel? _homeResponseModel;
   UserListResponseModel? get userDetailsResponse => _homeResponseModel;
