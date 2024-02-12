@@ -28,7 +28,9 @@ Map<String, dynamic> _$Page1ResponseModelToJson(Page1ResponseModel instance) =>
       'support': instance.support,
     };
 
-UserListResponseModel _$UserListResponseModelFromJson(Map<String, dynamic> json) => UserListResponseModel(
+UserListResponseModel _$UserListResponseModelFromJson(
+        Map<String, dynamic> json) =>
+    UserListResponseModel(
       id: json['id'] as int,
       email: json['email'] as String,
       firstName: json['first_name'] as String,
@@ -36,7 +38,9 @@ UserListResponseModel _$UserListResponseModelFromJson(Map<String, dynamic> json)
       avatar: json['avatar'] as String,
     );
 
-Map<String, dynamic> _$UserListResponseModelToJson(UserListResponseModel instance) => <String, dynamic>{
+Map<String, dynamic> _$UserListResponseModelToJson(
+        UserListResponseModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'first_name': instance.firstName,

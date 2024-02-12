@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
-part 'page_one_response_model.g.dart';
+part 'user_list_response_model.g.dart';
 
 List<Page1ResponseModel> responseModelFromJson(String str) =>
     List<Page1ResponseModel>.from(
