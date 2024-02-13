@@ -5,6 +5,7 @@ import 'package:mvvm_task_demo/core/constants/color_constants.dart';
 import 'package:mvvm_task_demo/core/constants/image_constants.dart';
 import 'package:mvvm_task_demo/core/constants/string_constants.dart';
 import 'package:mvvm_task_demo/core/enums/viewstate.dart';
+import 'package:mvvm_task_demo/core/routing/routes.dart';
 import 'package:mvvm_task_demo/core/viewmodels/home_view_model.dart';
 import 'package:mvvm_task_demo/ui/views/base_view.dart';
 import 'package:mvvm_task_demo/ui/views/detail_view.dart';
@@ -174,13 +175,8 @@ class HomeView extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailView(
-                          name: list,
-                        ),
-                      ));
+                  Navigator.of(context)
+                      .pushNamed(Routes.detailsRoute, arguments: list);
                 },
                 child: Container(
                   decoration: BoxDecoration(
